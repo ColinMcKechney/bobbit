@@ -90,7 +90,7 @@ async def youtube_title(bot, url, text):
         re.search(r'https?://[^\s]+youtube.com/watch\?v=', url),
         re.search(r'https?://[^\s]+youtube.com/live/', url),
         re.search(r'https?://[^\s]+youtube.com/shorts/', url),
-        re.search(r'https?://[^\s]+youtu.be/', url),
+        re.search(r'https?://youtu.be/', url),
     ]):
         return None
 
