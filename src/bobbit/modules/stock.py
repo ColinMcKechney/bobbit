@@ -26,17 +26,17 @@ async def stock(bot, message, symbol=None):
             data     = await response.json()
             response = bot.client.format_text(
                 "{bold}Symbol{bold}: {symbol}, "
-                "{color}{magenta}Price{color}: {price}, "
-                "{color}{blue}Open{color}: {price_open}, "
-                "{color}{green}High{color}: {day_high}, "
-                "{color}{red}Low{color}: {day_low}, "
+                "{color}{magenta}Price{color}: {price:0.2f}, "
+                "{color}{blue}Open{color}: {price_open:0.2f}, "
+                "{color}{green}High{color}: {day_high:0.2f}, "
+                "{color}{red}Low{color}: {day_low:0.2f}, "
                 "{color}{cyan}Change{color}: {day_change:0.2f}",
                 symbol     = symbol.upper(),
                 price      = data['c'],
                 price_open = data['o'],
                 day_high   = data['h'],
                 day_low    = data['l'],
-                day_change = data.get('d', data['pc'] - data['c']),
+                day_change = data.get('d', data['c'] - data['pc']),
             )
         except KeyError:
             response = 'No results'
