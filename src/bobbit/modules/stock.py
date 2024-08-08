@@ -36,7 +36,7 @@ async def stock(bot, message, symbol=None):
                 price_open = data['o'],
                 day_high   = data['h'],
                 day_low    = data['l'],
-                day_change = data['c'] - data['o'],
+                day_change = data.get('d', data['pc'] - data['c']),
             )
         except KeyError:
             response = 'No results'
